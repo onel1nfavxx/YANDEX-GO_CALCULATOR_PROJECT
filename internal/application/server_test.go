@@ -7,20 +7,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"testing"
-
-	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/custom_errors"
 )
-
-// Mock функции Calc для тестирования
-func mockCalc(expression string) (float64, error) {
-	if expression == "1 + 2" {
-		return 3, nil
-	}
-	if expression == "invalid" {
-		return 0, custom_errors.ErrInvalidExpression
-	}
-	return 0, nil
-}
 
 func TestCalcHandler(t *testing.T) {
 	tests := []struct {
