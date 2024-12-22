@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"encoding/json"
 	"errors"
-	"fmt"
 	"log"
 	"net/http"
 	"os"
@@ -79,9 +78,10 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 		} else {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 		}
-
 	} else {
-		fmt.Fprintf(w, "result: %f", result)
+		response := map[string]float64{"result": result}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 	}
 }
 
