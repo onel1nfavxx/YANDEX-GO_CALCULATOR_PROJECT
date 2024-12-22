@@ -79,6 +79,32 @@ json
 bash
 Копировать код
 go test ./...
+
+cURLs:
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-H "Content-Type: application/json" \
+-d '{"expression": "1 + 2"}'
+
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-H "Content-Type: application/json" \
+-d '{"expression": "invalid"}'
+
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-H "Content-Type: application/json" \
+-d '{invalid}'
+
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-H "Content-Type: application/json" \
+-d '{"expression": "error"}'
+
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-H "Content-Type: application/json" \
+-d ''
+
+curl -X POST http://localhost:8080/api/v1/calculate/ \
+-d '{"expression": "1 + 2"}'
+
+
 Примечания
 Для работы API требуется установленный Go (версии 1.18 и выше).
 Все зависимости проекта управляются через go mod. Убедитесь, что в корне проекта находится go.mod.
