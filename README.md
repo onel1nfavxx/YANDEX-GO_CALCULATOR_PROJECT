@@ -22,7 +22,7 @@
     ```
 3. Перейдите в папку проекта и запустите сервер:
     ```bash
-    go run ./cmd/CalculationService/...
+    go run ./cmd/main.go
     ```
 4. Сервис будет доступен по адресу: [http://localhost:8080/api/v1/calculate](http://localhost:8080/api/v1/calculate).
 
