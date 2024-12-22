@@ -10,6 +10,7 @@ import (
 	"os"
 	"strings"
 
+	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/custom_errors"
 	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/pkg/calculation"
 )
 
@@ -73,10 +74,10 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 
 	result, err := calculation.Calc(request.Expression)
 	if err != nil {
-		if errors.Is(err, calculation.ErrInvalidExpression) {
-			fmt.Fprintf(w, "err: %s", err.Error())
+		if errors.Is(err, custom_errors.ErrInvalidExpression) {
+			http.Error(w, err.Error(), 422)
 		} else {
-			fmt.Fprintf(w, "unknown err")
+			http.Error(w, err.Error(), 500)
 		}
 
 	} else {

@@ -1,4 +1,4 @@
-package calculation
+package custom_errors
 
 import "errors"
 

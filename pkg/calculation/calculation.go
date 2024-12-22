@@ -1,9 +1,10 @@
 package calculation
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
+
+	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/custom_errors"
 )
 
 type Operator struct {
@@ -62,7 +63,7 @@ func Calc(expression string) (float64, error) {
 		switch token {
 		case "+":
 			if len(numStack) < 2 {
-				return 0, fmt.Errorf("недостаточно операндов для операции %s", token)
+				return 0, custom_errors.ErrInvalidExpression
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -71,7 +72,7 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a+b)
 		case "-":
 			if len(numStack) < 2 {
-				return 0, fmt.Errorf("недостаточно операндов для операции %s", token)
+				return 0, custom_errors.ErrInvalidExpression
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -80,7 +81,7 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a-b)
 		case "*":
 			if len(numStack) < 2 {
-				return 0, fmt.Errorf("недостаточно операндов для операции %s", token)
+				return 0, custom_errors.ErrInvalidExpression
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -89,27 +90,27 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a*b)
 		case "/":
 			if len(numStack) < 2 {
-				return 0, fmt.Errorf("недостаточно операндов для операции %s", token)
+				return 0, custom_errors.ErrInvalidExpression
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
 			a := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
 			if b == 0 {
-				return 0, fmt.Errorf("деление на ноль")
+				return 0, custom_errors.ErrDivisionByZero
 			}
 			numStack = append(numStack, a/b)
 		default:
 			num, err := strconv.ParseFloat(token, 64)
 			if err != nil {
-				return 0, fmt.Errorf("недопустимый токен: %s", token)
+				return 0, custom_errors.ErrInvalidExpression
 			}
 			numStack = append(numStack, num)
 		}
 	}
 
 	if len(numStack) != 1 {
-		return 0, fmt.Errorf("недопустимое выражение")
+		return 0, custom_errors.ErrInvalidExpression
 	}
 
 	return numStack[0], nil
