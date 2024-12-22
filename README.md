@@ -18,7 +18,7 @@
 1. Установите [Go](https://go.dev/dl/).
 2. Склонируйте проект с GitHub:
     ```bash
-    git clone https://github.com/your-username/CalculationService.git
+    git clone https://github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT.git
     ```
 3. Перейдите в папку проекта и запустите сервер:
     ```bash
