@@ -11,8 +11,9 @@ import (
 
 func TestCalcHandler(t *testing.T) {
 	tests := []struct {
-		name           string
-		requestBody    string
+		name        string
+		requestBody string
+
 		expectedStatus int
 		expectedResult float64
 	}{
