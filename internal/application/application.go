@@ -10,7 +10,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/pashapdev/calc_go/pkg/calculation"
+	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/pkg/calculation"
 )
 
 type Config struct {

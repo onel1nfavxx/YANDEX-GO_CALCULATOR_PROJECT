@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/pashapdev/calc_go/internal/application"
+	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/internal/application"
 )
 
 func main() {
