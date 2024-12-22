@@ -81,11 +81,12 @@ func CalcHandler(w http.ResponseWriter, r *http.Request) {
 	} else {
 		response := map[string]float64{"result": result}
 		w.Header().Set("Content-Type", "application/json")
+		w.WriteHeader(http.StatusOK)
 		json.NewEncoder(w).Encode(response)
 	}
 }
 
 func (a *Application) RunServer() error {
-	http.HandleFunc("/api/v1/calculate", CalcHandler)
+	http.HandleFunc("/api/v1/calculate/", CalcHandler)
 	return http.ListenAndServe(":"+a.config.Addr, nil)
 }
