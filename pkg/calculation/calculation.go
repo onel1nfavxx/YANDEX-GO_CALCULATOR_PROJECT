@@ -63,7 +63,7 @@ func Calc(expression string) (float64, error) {
 		switch token {
 		case "+":
 			if len(numStack) < 2 {
-				return 0, custom_errors.ErrInvalidExpression
+				return 0, custom_errors.ErrInvInputs
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -72,7 +72,7 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a+b)
 		case "-":
 			if len(numStack) < 2 {
-				return 0, custom_errors.ErrInvalidExpression
+				return 0, custom_errors.ErrInvInputs
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -81,7 +81,7 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a-b)
 		case "*":
 			if len(numStack) < 2 {
-				return 0, custom_errors.ErrInvalidExpression
+				return 0, custom_errors.ErrInvInputs
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -90,7 +90,7 @@ func Calc(expression string) (float64, error) {
 			numStack = append(numStack, a*b)
 		case "/":
 			if len(numStack) < 2 {
-				return 0, custom_errors.ErrInvalidExpression
+				return 0, custom_errors.ErrInvInputs
 			}
 			b := numStack[len(numStack)-1]
 			numStack = numStack[:len(numStack)-1]
@@ -103,14 +103,14 @@ func Calc(expression string) (float64, error) {
 		default:
 			num, err := strconv.ParseFloat(token, 64)
 			if err != nil {
-				return 0, custom_errors.ErrInvalidExpression
+				return 0, custom_errors.ErrInvInputs
 			}
 			numStack = append(numStack, num)
 		}
 	}
 
 	if len(numStack) != 1 {
-		return 0, custom_errors.ErrInvalidExpression
+		return 0, custom_errors.ErrInvInputs
 	}
 
 	return numStack[0], nil
