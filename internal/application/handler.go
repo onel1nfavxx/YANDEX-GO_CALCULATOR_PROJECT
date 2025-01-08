@@ -7,7 +7,7 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/calculation"
+	"github.com/onel1nfavxx/YANDEX-GO_CALCULATOR_PROJECT/pkg/calculation"
 )
 
 type Request struct {
