@@ -5,6 +5,7 @@ import (
 )
 
 func main() {
-	app := application.New()
-	app.RunServer()
+	address := "localhost:8080"
+	server := application.NewServer(address)
+	server.Run()
 }
