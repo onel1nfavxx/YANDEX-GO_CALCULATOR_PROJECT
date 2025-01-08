@@ -16,12 +16,10 @@ type Request struct {
 
 type ResponseSuccess struct {
 	Result string `json:"result"`
-	Code   int
 }
 
 type ResponseError struct {
 	Error string `json:"error"`
-	Code  int
 }
 
 type Config struct {
